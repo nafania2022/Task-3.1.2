@@ -12,8 +12,11 @@ import java.util.List;
 @Transactional()
 public class UserService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     public void addUser(User user) {
         userRepository.save(user);
